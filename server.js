@@ -21,7 +21,7 @@ app.use(
 app.use(
   cors({
     credentials: true,
-    origin: [process.env.YOUTUBE_URL]
+    origin: [process.env.FRONTEND_APP_URL,process.env.YOUTUBE_URL]
   })
 );
 
