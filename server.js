@@ -4,21 +4,26 @@ const cors = require("cors");
 const path = require("path");
 
 const app = express();
+app.set("trust proxy", 1);
 
+app.use(
+  session({
+    secret: process.env.SESSION_SECRET || 'Super Secret (change it)',
+    resave: true,
+    saveUninitialized: false,
+    cookie: {
+      sameSite: process.env.NODE_ENV === "production" ? 'none' : 'lax', // must be 'none' to enable cross-site delivery
+      secure: process.env.NODE_ENV === "production", // must be true if sameSite='none'
+    }
+  })
+);
 
-var sess = {
-  secret: 'keyboard cat',
-  cookie: {
-    samaSite: 'none',
-  }
-}
-
-if (app.get('env') === 'production') {
-  app.set('trust proxy', 1) // trust first proxy
-  sess.cookie.secure = true // serve secure cookies
-}
-
-app.use(session(sess))
+app.use(
+  cors({
+    credentials: true,
+    origin: [process.env.FRONTEND_APP_URL]
+  })
+);
 
 
 //静的ファイルの読み込み
