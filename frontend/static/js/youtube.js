@@ -43,3 +43,4 @@ function stopVideo() {
     player.stopVideo();
 }
 
+onYouTubeIframeAPIReady(param)
