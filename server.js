@@ -16,7 +16,7 @@ app.use(
 
 app.use(
   expressSession({
-    secret: process.env.SESSION_SECRET,
+    secret: process.env.SESSION_SECRET || 'Super Secret',
     resave: true,
     saveUninitialized: false,
     cookie: {
