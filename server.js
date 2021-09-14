@@ -27,7 +27,10 @@ app.use(
 );
 
 app.use(
-  cors()
+  cors({
+    credentials: true,
+    origin: ["https://beat-chain.herokuapp.com"]
+  })
 );
 
 //リクエスト処理
