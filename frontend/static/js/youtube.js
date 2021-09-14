@@ -54,5 +54,5 @@ async function fadeInVolume() {
 function reflectVideo() {
     let textbox = document.getElementById("youtube-link");
     console.log(textbox.value);
-    window.location.href = "http://" + location.host + "?" + textbox.value;
+    window.location.href = "https://" + location.host + "?" + textbox.value;
 }
