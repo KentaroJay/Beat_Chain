@@ -1,5 +1,5 @@
 const express = require("express");
-const expressSession = require('express-session');
+const session = require('express-session');
 const cors = require("cors");
 const path = require("path");
 
@@ -14,22 +14,23 @@ app.use(
   express.static(path.resolve(__dirname, "frontend", "static"))
 );
 
-app.use(
-  expressSession({
-    secret: process.env.SESSION_SECRET || 'Super Secret',
-    resave: true,
-    saveUninitialized: false,
-    cookie: {
-      sameSite: 'none',
-      secure: true,
-    }
-  })
-);
+app.use(session({
+  allowedHeaders: ['sessionId', 'Content-Type'],
+  exposedHeaders: ['sessionId'],
+  secret: 'reply-analyzer',
+  resave: false,
+  saveUninitialized: false,
+  cookie: {
+    secure: true,
+    sameSite: 'None'
+  }
+}));
 
 app.use(
   cors({
+    origin: "https://beat-chain.herokuapp.com",
     credentials: true,
-    origin: ["https://beat-chain.herokuapp.com"]
+    optionsSuccessStatus: 200
   })
 );
 
