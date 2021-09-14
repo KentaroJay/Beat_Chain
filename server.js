@@ -5,20 +5,20 @@ const path = require("path");
 
 const app = express();
 
-app.set("trust proxy", 1);
 
-app.use(session({
-  secret: 'reply-analyzer',
-  name: "spa",
-  resave: false,
-  saveUninitialized: false,
+var sess = {
+  secret: 'keyboard cat',
   cookie: {
-    sameSite: 'none',
-    secure: true
+    samaSite: 'none',
   }
-}));
+}
 
-app.use(cors());
+if (app.get('env') === 'production') {
+  app.set('trust proxy', 1) // trust first proxy
+  sess.cookie.secure = true // serve secure cookies
+}
+
+app.use(session(sess))
 
 
 //静的ファイルの読み込み
