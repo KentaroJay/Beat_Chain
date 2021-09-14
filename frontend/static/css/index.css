@@ -41,3 +41,6 @@ input {
     margin: 2em 0 2em 0;
     width: var(--nav-width);
 }
+iframe {
+    display: block;
+}

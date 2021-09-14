@@ -1,6 +1,6 @@
 let param = ""
+const regexp = /(?:https?:)?(?:\/\/)?(?:[0-9A-Z-]+\.)?(?:youtu\.be\/|youtube(?:-nocookie)?\.com\S*?[^\w\s-])([\w-]{11})(?=[^\w-]|$)(?![?=&+%\w.-]*(?:['"][^<>]*>|<\/a>))[?=&+%\w.-]*/gim;
 if (location.search != "") {
-    const regexp = /(?:https?:)?(?:\/\/)?(?:[0-9A-Z-]+\.)?(?:youtu\.be\/|youtube(?:-nocookie)?\.com\S*?[^\w\s-])([\w-]{11})(?=[^\w-]|$)(?![?=&+%\w.-]*(?:['"][^<>]*>|<\/a>))[?=&+%\w.-]*/gim;
     param = location.search.slice(1)
     param = regexp.exec(param)[1]
 }
@@ -26,13 +26,14 @@ function onYouTubeIframeAPIReady(videoId = param) {
         width: '640',
         videoId: videoId,
         events: {
-            'onReady': onPlayerReady,
+            //'onReady': onPlayerReady,
         }
     });
 }
 
 // 4. The API will call this function when the video player is ready.
-function onPlayerReady(event) {
+async function onPlayerReady(event) {
+    player.mute()
     event.target.playVideo();
 }
 function playVideo() {
@@ -41,22 +42,4 @@ function playVideo() {
 function stopVideo() {
     player.stopVideo();
 }
-const _sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
-async function fadeVolume() {
-    for (let volume = 100; volume >= 0; volume--){
-        player.setVolume(volume)
-        await _sleep(2);
-    }
-}
-async function fadeInVolume() {
-    for (let volume = 0; volume <= 100; volume++) {
-        player.setVolume(volume)
-        await _sleep(2)
-    }
-}
 
-function reflectVideo() {
-    let textbox = document.getElementById("youtube-link");
-    console.log(textbox.value);
-    window.location.href = "https://" + location.host + "?" + textbox.value;
-}
