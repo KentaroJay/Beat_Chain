@@ -43,4 +43,6 @@ function stopVideo() {
     player.stopVideo();
 }
 
-onYouTubeIframeAPIReady(param)
+window.onload = function () {
+    onYouTubeIframeAPIReady(param)
+}
