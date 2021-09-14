@@ -26,6 +26,7 @@ function onYouTubeIframeAPIReady(videoId = param) {
         width: '640',
         videoId: videoId,
         events: {
+            'onReady': onPlayerReady,
         }
     });
 }
