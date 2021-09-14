@@ -63,6 +63,6 @@ function reflectVideo() {
     if (validate == null) {
         alert("Youtubeのリンクを貼ってください。")
     } else {
-        window.location.href = "http://" + location.host + "?" + textbox.value;
+        window.location.href = location.protocol + "//" + location.host + "?" + textbox.value;
     }
 }
