@@ -8,7 +8,7 @@ export default class extends AbstractView {
 
   async getHtml() {
     return `
-            <h1>Beat Chainとは?</h1>
+            <h1>Beatrainとは?</h1>
             <p>リズム感に自信がない方のための、リズム感強化アプリです。</p>
             <p>
               再生が始まると30病後に音量が小さくなったり、音量が元に戻ったりします。音量が小さくなっても、音量が元に戻るタイミングまでテンポを維持できるように練習してください。

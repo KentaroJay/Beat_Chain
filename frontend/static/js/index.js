@@ -27,7 +27,7 @@ const router = async () => {
   const routes = [
     { path: "/", view: Playground },
     { path: "/posts", view: Description },
-    { path: "/What's%20Beat%20Chain?", view: Description },
+    { path: "/What's%20Beatrain?", view: Description },
     { path: "/posts/:id", view: PostView },
     { path: "/settings", view: Settings },
   ];
