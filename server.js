@@ -1,8 +1,10 @@
 const express = require("express");
 const session = require('express-session');
 const cors = require("cors");
-var cookieParser = require('cookie-parser');
+const cookieParser = require('cookie-parser');
 const path = require("path");
+const parser = require('ua-parser-js');
+
 
 const app = express();
 app.set("trust proxy", 1);
