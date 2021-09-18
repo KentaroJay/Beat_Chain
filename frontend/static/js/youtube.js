@@ -42,3 +42,7 @@ async function playVideo() {
 async function stopVideo() {
     player.stopVideo();
 }
+
+window.onload = function () {
+    onYouTubeIframeAPIReady()
+}
